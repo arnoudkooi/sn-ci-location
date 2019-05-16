@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_data_item">
+    <sys_sg_data_item action="INSERT_OR_UPDATE">
+        <condition_type>script</condition_type>
+        <description/>
+        <group_by/>
+        <name>CI Location</name>
+        <query_condition/>
+        <query_condition_script><![CDATA[/* jshint strict: false */
+(function getQueryString(input) {
+    // define 'radius' form current location in km
+    var radius = 10;
+
+    //get last know location of current user from geo_history table
+    var grGeoHistory = new GlideRecord('geo_history');
+    grGeoHistory.addQuery("user", gs.getUserID());
+    grGeoHistory.orderByDesc('sys_updated_on');
+    grGeoHistory.setLimit(1);
+    grGeoHistory.query();
+    grGeoHistory.next();
+
+    var lat = grGeoHistory.getValue('latitude');
+    var lng = grGeoHistory.getValue('longitude');
+
+    if (!lat) return "location=-1"; //empty list when no location found
+
+    var encQuery = new SNC.GeoLocation().getEncodedQuery("latitude", "longitude",lat, lng, radius);
+
+
+    //push all found locations in an array
+    var grLoc = new GlideRecord('cmn_location');
+    grLoc.addEncodedQuery(encQuery);
+    grLoc.query();
+    var locations = [];
+    while (grLoc.next()) {
+        locations.push(grLoc.getUniqueValue());
+    }
+
+    return 'locationIN'  + locations.join(',');
+ })(input);]]></query_condition_script>
+        <sys_class_name>sys_sg_data_item</sys_class_name>
+        <sys_created_by>Arnoud.Kooi</sys_created_by>
+        <sys_created_on>2019-05-16 08:07:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>4bb3f0084fad33809881c5c18110c7d1</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>CI Location</sys_name>
+        <sys_package display_value="CI Location" source="x_snc_ci_location">b053b4844fad33809881c5c18110c7ff</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="CI Location">b053b4844fad33809881c5c18110c7ff</sys_scope>
+        <sys_update_name>sys_sg_data_item_4bb3f0084fad33809881c5c18110c7d1</sys_update_name>
+        <sys_updated_by>Arnoud.Kooi</sys_updated_by>
+        <sys_updated_on>2019-05-16 08:47:46</sys_updated_on>
+        <table>cmdb_ci</table>
+    </sys_sg_data_item>
+</record_update>

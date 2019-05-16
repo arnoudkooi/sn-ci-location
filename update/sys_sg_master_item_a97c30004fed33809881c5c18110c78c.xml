@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_sg_master_item">
+    <sys_sg_master_item action="INSERT_OR_UPDATE">
+        <condition/>
+        <condition_order/>
+        <item_view display_value="CI Location item view">597c30004fed33809881c5c18110c75e</item_view>
+        <name>Master Item</name>
+        <screen display_value="CI Location">2d7c30004fed33809881c5c18110c753</screen>
+        <sys_class_name>sys_sg_master_item</sys_class_name>
+        <sys_created_by>Arnoud.Kooi</sys_created_by>
+        <sys_created_on>2019-05-16 08:45:39</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a97c30004fed33809881c5c18110c78c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Master Item</sys_name>
+        <sys_package display_value="CI Location" source="x_snc_ci_location">b053b4844fad33809881c5c18110c7ff</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="CI Location">b053b4844fad33809881c5c18110c7ff</sys_scope>
+        <sys_update_name>sys_sg_master_item_a97c30004fed33809881c5c18110c78c</sys_update_name>
+        <sys_updated_by>Arnoud.Kooi</sys_updated_by>
+        <sys_updated_on>2019-05-16 08:45:39</sys_updated_on>
+        <table>cmdb_ci</table>
+    </sys_sg_master_item>
+</record_update>
